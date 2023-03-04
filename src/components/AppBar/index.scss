@@ -1,8 +1,10 @@
 .app-bar {
   width: 100%;
-  height: 30px;
-  -webkit-app-region: drag;
+  height: 32px;
   position: fixed;
   top: 0;
   left: 0;
+  background-color: #202123;
+  border-bottom: 1px solid #343541;
+  -webkit-app-region: drag;
 }

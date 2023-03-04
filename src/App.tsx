@@ -1,11 +1,12 @@
 import React from "react";
-import nodeLogo from "./assets/node.svg";
-import { useState } from "react";
 import "./App.scss";
 import { AppBar } from "./components/AppBar";
 import DBConnectionForm from "./components/DBConnectionForm";
 import { createActorContext } from "@xstate/react";
 import { compassMachine } from "./machines/compassMachine";
+import HomePageSidebar from "./components/HomePageSidebar";
+import { MemoryRouter as Router, Routes, Route } from "react-router-dom";
+import HomeScreen from "./screens/HomeScreen";
 
 console.log(
   "[App.tsx]",
@@ -15,17 +16,21 @@ console.log(
 export const CompassContext = createActorContext(compassMachine);
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <CompassContext.Provider>
-      <div>
-        <AppBar />
+    <Router>
+      <CompassContext.Provider>
+        <div>
+          <AppBar />
+          <div style={{ marginTop: 32 }} />
 
-        {/* DB connection form */}
-        <DBConnectionForm />
-      </div>
-    </CompassContext.Provider>
+          <div className="app-screens screens">
+            <Routes>
+              <Route path="/" element={<HomeScreen />} />
+            </Routes>
+          </div>
+        </div>
+      </CompassContext.Provider>
+    </Router>
   );
 }
 

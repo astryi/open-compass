@@ -48,9 +48,9 @@ async function createWindow() {
     width: 1000,
     height: 660,
     titleBarStyle: "hidden",
-    backgroundColor: '#242424',
+    backgroundColor: "#343541",
     titleBarOverlay: {
-      color: "#242424",
+      color: "#202123",
       symbolColor: "#ffffff",
       height: 30,
     },

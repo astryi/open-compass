@@ -1,0 +1,51 @@
+.home-screen {
+  display: flex;
+
+  .sidebar {
+    height: calc(100vh - 30px);
+    width: 266px;
+
+    .sidebar-content {
+      position: fixed;
+      left: 0;
+      width: inherit;
+      height: inherit;
+      padding: 0;
+      border-right: 1px solid #4d4d4f;
+      background-color: #202123;
+
+      .home-page-sidebar {
+        margin-top: 16px;
+        padding: 0 8px;
+      }
+
+      ul {
+        margin-top: 16px;
+        list-style: none;
+
+        li {
+          margin-bottom: 4px;
+          padding: 8px 16px;
+          border-radius: 5px;
+          font-size: 14px;
+          font-weight: 400;
+          color: #ececf1;
+
+          &:hover {
+            background-color: #2a2b32;
+          }
+
+          :first-child {
+            margin-top: 16px;
+          }
+        }
+      }
+    }
+  }
+
+  .content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+}
