@@ -1,9 +1,10 @@
 import { actions, assign, createMachine } from "xstate";
 import { DBType } from "./compassMachine.d";
+import { ipcRenderer } from "electron";
 
 export const compassMachine = createMachine(
   {
-    /** @xstate-layout N4IgpgJg5mDOIC5QBEBCBZAhgYwBYEsA7MAOllwHsB3NAYQsOOwBd8GAxCgJwFsBiWAFcARj3zNOvANoAGALqJQABwqxxbQopAAPRACYAHAEYSAZkNGZBvQHYAbKaMBWPQBoQAT0RGjNkjZtTABZLJxk9ELsgpwBfGPc0LDwiUmwGJlZCKAB1cVw0PggGUiIANwoAa1JEnAJiEjTGMBYiHLy0BDKKbExWBlk5Aa0VNT7NJB1EO3sSAE4nUxl5gyCDOwMbdy8EI1t-INnZ0wMnWZXTGycguISMWpSG9ObMtuZ81D4wLi5uEiUAG16ADNuDwSDVkvVGhlWrk3h0uj0xgMhhMRuoGFpdAhpnY5gslk4VmsNltvBs5kY7NSZHY9NNZnYZDYbiAIXVSBBhPQmi0GABlQTYbBwWBAwT-QrFMjMXrVO6Qzncp58wiC4Wi8X-VHKVQY8agbGMoIkA6HBx6PRGWY2a1khDGEhhGQumRBdbMjbXeJshUckhcnkwjiYfD-SB8LhgZhcDw6kDosZYxAGcL+Ixe0yzcLU072wymOb2Jx2JyBazTOI+wgUCBwLTslLDPVJibYgC0dntndZjfq5GodBVY0kPGbow0yYQQTcnm8BxIVnM812tMCLJ9fdSw9h7VQ4-1U6CjhIuwONhO0Vmegu9p8fjNjIzV1L0Q3tyS-sDO4FQpFsDFCUD1bQ1EGzGR-FLOxLD0N15htO9TELQ5DlOWwVhdFxez9B5v15EdQ3DCBgMnNswJdSCSxguDTk2OcdmvU0UOsWkrBkDMqxiIA */
+    /** @xstate-layout N4IgpgJg5mDOIC5QBEBCBZAhgYwBYEsA7MAOllwHsB3NAYQsOOwBd8GAxCgJwFsBiWAFcARj3zNOvANoAGALqJQABwqxxbQopAAPRAHYAbCQDMAJgAcARlMBWADQgAnoks3TJN8YAsxvTYC+-g5oWHhEpNgMTKyEUADq4rhofBAMpEQAbhQA1qQhOATEJJGMYCxE8YloCJkU2JisDLJyzVoqao2aSDqIBjYkBmZ6AJx6pl7WljLDXg7OCF42XoHBGAXhxVFlMZXMSah8YFxc3CRKADYNAGbcPCT5YUUl0RUJe9W19Z3Nrd3t6gwtLoEGZjCRhjZjNMvF5zONTJZhnNEMZUSRbCsQA9CqQIMJ6KVygwAMqCbDYOCwK6Cc58LiQfD0lgAFQodFwDWJShwYF+ylUAK6oGBNnMAxGBjG40m0ORCAMMI8mOxGzxBJeHEw+HOkDpYGYXEcfJA-06QJRejFMLcVmGcK8CKRTkQViVQSxa0epAoSjAhFoHOYXJ5AAVMDAUmkSLVcvdPTiSD6-QHOdyKWGYDVCFkvhofvI2gKzd1gaYxh4lpLTNKEbLnQg-GK-Mr4xsk-7A8H0+GwIdjqcLtdbnHQgn2ymg2mwBmwFmcw08-JjaaNOaEKZhiQZAZxuYvHoJrXhsZzHLzMYjM33SqiucKJgIBU0AAZfCwCRanUQPUGo0Fv5FquJaIAAtAqJjWDYri2OYlrDNucqWpY6IBNerZFOQ1Avm+zACGAOosGgy6AYCwHrsMm7mFBSxjIeUwzHKwyWGKGJoaOba+oQaBdr2qRFDGeTod6nHcVOc51AuTRLv+-IdEBwqIJCyEHgiUp0dMcpTJYBgtuxRTtqJPJ9icXBnJczA3LwI7rPpImoDx4m5lJLQySaJFCj0IKmDIJD0cYNijOpDH1pY9EkFeqx6aQd4Pk+GCUj2sDsJ+ur0r+xFyaRCkINpRgyMY1jeAeMrBfMoWIihgTuoQFAQHAWg3mAhaZR5wIgaF7gFbY0GinBCH1mBuk2aQmE0Kg6rbBokg8M1gprjCZ7IahkXDZshI7G8+yzcW2VuL5thylCLHLR6UUkGqWxEoQpLkpS1LnNt8meTYRheAYsFFUFsz1i9J2Ned+KXZ0yXapAj1ZZ5ZheOFfQBTC9qOnK3n9H9QmJpxE48TO4Otb0PmSsMVY1vR33zHozFDV6ZCUGNr7vjja4WHoJCwV4dr7l9Z42P0EWnatMWPrE2HviDX4M2RljQ5WVGBSVJ6MZYzO8-9Bn2VO4vZRYm7k9M1bE3W8wUchrErVTo0hAlMAa89Bibn5AXFUemkyOYOlsfz96C1AFuwLAiWi2DAEtYzMy+dM-my0epMuMxSuoYEQA */
     id: "DBMachine",
     initial: "showDBConnectionForm",
     tsTypes: {} as import("./compassMachine.typegen").Typegen0,
@@ -22,7 +23,24 @@ export const compassMachine = createMachine(
         | { type: "updateDBType"; value: DBType }
         | { type: "updateConnectionUrl"; value: string }
         | { type: "updateDBUserName"; value: string }
-        | { type: "updateDBUserPass"; value: string },
+        | { type: "updateDBUserPass"; value: string }
+        | { type: "retry" }
+        | { type: "redirectToDBChatSpace" }
+        | { type: "showDBList" }
+        | { type: "selectDB"; dbId: string }
+        | { type: "showChatSpace" },
+
+      services: {} as {
+        connectingWithDB: {
+          data: any;
+        };
+        loadDBList: {
+          data: any;
+        };
+        loadDBMessages: {
+          data: any;
+        };
+      },
     },
     context: {
       connectionFormState: {
@@ -32,6 +50,15 @@ export const compassMachine = createMachine(
         dbUserPass: "" as string,
         shouldShow: true as boolean,
       },
+      dbList: [] as { id: number; name: string }[],
+      dbMessageList: [] as Map<
+        string,
+        {
+          promt: { text: string; code: string };
+          reply: { text: string; code: string };
+          createdAt: Date;
+        }
+      >[],
     },
     states: {
       showDBConnectionForm: {
@@ -49,7 +76,7 @@ export const compassMachine = createMachine(
                 },
               };
             }),
-          }
+          },
         },
       },
 
@@ -62,21 +89,73 @@ export const compassMachine = createMachine(
       },
 
       dbConnectionSuccessful: {
-        onDone: {
-          target: "dbConnectionSuccessful",
-        },
+        on: { redirectToDBChatSpace: "openChatSpacePage" },
       },
+
       dbConnectionFailed: {
         on: {
           retry: "showDBConnectionForm",
+        },
+      },
+
+      openChatSpacePage: {
+        invoke: {
+          src: "loadDBList",
+          onDone: "showDBList",
+          onError: "loadingDBListFailed",
+        },
+      },
+
+      showDBList: {
+        on: {
+          selectDB: "openDBSpace",
+        },
+      },
+
+      loadingDBListFailed: {
+        on: {
+          retry: "openChatSpacePage",
+        },
+      },
+
+      openDBSpace: {
+        invoke: {
+          src: "loadDBMessages",
+          onDone: "showDBMessage",
+          onError: "loadingDBMessagesFailed",
+        },
+      },
+
+      showDBMessage: {},
+      loadingDBMessagesFailed: {
+        on: {
+          retry: "openDBSpace",
         },
       },
     },
   },
   {
     services: {
+      loadDBMessages: async () => {},
+      loadDBList: async () => {},
       connectingWithDB: async (context) => {
-        return await { connected: true };
+        try {
+          const result = await ipcRenderer.invoke("make-db-connection", {
+            type: context.connectionFormState.dbType,
+            url: context.connectionFormState.dbConnUrl,
+            port: 5432,
+            userName: context.connectionFormState.dbUserName,
+            password: context.connectionFormState.dbUserPass,
+          });
+
+          console.log(result);
+
+          if (!result.success) {
+            throw new Error(result.message);
+          }
+        } catch (err) {
+          throw err;
+        }
       },
     },
   }

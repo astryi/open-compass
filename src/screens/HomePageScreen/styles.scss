@@ -1,5 +1,7 @@
 .home-screen {
   display: flex;
+  height: inherit;
+  overflow: hidden;
 
   .sidebar {
     height: calc(100vh - 30px);
@@ -11,7 +13,6 @@
       width: inherit;
       height: inherit;
       padding: 0;
-      border-right: 1px solid #4d4d4f;
       background-color: #202123;
 
       .home-page-sidebar {
@@ -47,5 +48,6 @@
     flex: 1;
     display: flex;
     justify-content: center;
+    overflow: auto;
   }
 }

@@ -6,7 +6,8 @@ import { createActorContext } from "@xstate/react";
 import { compassMachine } from "./machines/compassMachine";
 import HomePageSidebar from "./components/HomePageSidebar";
 import { MemoryRouter as Router, Routes, Route } from "react-router-dom";
-import HomeScreen from "./screens/HomeScreen";
+import HomeScreen from "./screens/HomePageScreen";
+import ChatSpaceScreen from "./screens/ChatSpaceScreen";
 
 console.log(
   "[App.tsx]",
@@ -19,15 +20,14 @@ function App() {
   return (
     <Router>
       <CompassContext.Provider>
-        <div>
-          <AppBar />
-          <div style={{ marginTop: 32 }} />
+        <AppBar />
+        <div style={{ marginTop: 32 }} />
 
-          <div className="app-screens screens">
-            <Routes>
-              <Route path="/" element={<HomeScreen />} />
-            </Routes>
-          </div>
+        <div className="app-screens screens">
+          <Routes>
+            <Route path="/" element={<HomeScreen />} />
+            <Route path="/chat-space" element={<ChatSpaceScreen />} />
+          </Routes>
         </div>
       </CompassContext.Provider>
     </Router>

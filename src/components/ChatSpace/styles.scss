@@ -1,0 +1,69 @@
+.chat-space {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .display-message-section {
+        flex: 1;
+        width: 100%;
+    }
+
+    .prompt-section {
+        width: 100%;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        padding: 0 16px;
+
+        .prompt-form {
+            position: relative;
+            margin: 0 auto 14px;
+            display: flex;
+            width: 100%;
+            max-width: 800px;
+            align-items: center;
+            justify-content: center;
+
+            input {
+                flex: 1;
+                padding: 12px 16px;
+                font-size: 16px;
+                background-color: #343541;
+                border: 1px solid #686868;
+                border-radius: 5px;
+                outline: none;
+
+                &:focus {
+                    background-color: #40414F;
+                }
+            }
+
+            button {
+                position: absolute;
+                top: 50%;
+                right: 16px;
+                transform: translateY(-50%);
+                background-color: transparent;
+                border: none;
+                padding: 4px;
+                border-radius: 5px;
+
+                &:hover {
+                    background-color: black;
+                }
+            }
+        }
+
+        .message {
+            color: #a8a8a8;
+            font-size: 12px;
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+    }
+}

@@ -8,6 +8,8 @@
         };
         invokeSrcNameMap: {
           "connectingWithDB": "done.invoke.DBMachine.connectingWithDB:invocation[0]";
+"loadDBList": "done.invoke.DBMachine.openChatSpacePage:invocation[0]";
+"loadDBMessages": "done.invoke.DBMachine.openDBSpace:invocation[0]";
         };
         missingImplementations: {
           actions: never;
@@ -26,8 +28,10 @@
         };
         eventsCausingServices: {
           "connectingWithDB": "submitForm";
+"loadDBList": "redirectToDBChatSpace" | "retry";
+"loadDBMessages": "retry" | "selectDB";
         };
-        matchesStates: "connectingWithDB" | "dbConnectionFailed" | "dbConnectionSuccessful" | "showDBConnectionForm";
+        matchesStates: "connectingWithDB" | "dbConnectionFailed" | "dbConnectionSuccessful" | "loadingDBListFailed" | "loadingDBMessagesFailed" | "openChatSpacePage" | "openDBSpace" | "showDBConnectionForm" | "showDBList" | "showDBMessage";
         tags: never;
       }
   
